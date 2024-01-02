@@ -1,1 +1,30 @@
-<p>cal works!</p>
+<form [formGroup]="calculatorForm">
+  <div class="container calculator">
+    <div class="content">
+      <label> Input: </label>
+      <input type="text" formControlName="input" />
+    </div>
+    <div class="content">
+      <button
+        class="btn btn-primary btn-number"
+        *ngFor="let number of numberList"
+        (click)="setInputValue(number)"
+      >
+        {{ number }}
+      </button>
+    </div>
+    <div class="content">
+      <button
+        class="btn btn-primary btn-number"
+        *ngFor="let operator of operatorList" (click)="setInputValue(operator)"
+      >
+        {{ operator }}
+      </button>
+    </div>
+    <div class="content">
+      <button class="btn btn-primary" (click)="onSubmit()">=</button>
+    </div>
+
+    <h4>Result is: {{finalResultValue}}</h4>
+  </div>
+</form>
