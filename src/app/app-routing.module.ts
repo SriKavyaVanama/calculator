@@ -1,13 +1,27 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CalculatorComponent } from './calculator/calculator.component';
+import { LoginPageComponent } from './login/login-page/login-page.component';
 
 const routes: Routes = [
-  { path: 'calculator', component: CalculatorComponent }
+  {
+    path:'', 
+    redirectTo: 'login',
+    pathMatch: 'full'
+  },
+  {
+    path: 'login',
+    loadChildren: () =>
+      import('./login/login.module').then((m) => m.LoginModule),
+  },
+  {
+    path: 'calculator',
+    loadChildren: () =>
+      import('./calculator/calculator.module').then((m) => m.CalculatorModule),
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
