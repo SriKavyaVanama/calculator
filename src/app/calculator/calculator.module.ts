@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CalComponent } from './cal/cal.component';
 import { RouterModule } from '@angular/router';
 import { CalculatorRoutingModule } from './calculator-routing.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -11,7 +12,7 @@ import { CalculatorRoutingModule } from './calculator-routing.module';
     CalComponent
   ],
   imports: [
-    CommonModule, RouterModule, CalculatorRoutingModule
+    CommonModule, RouterModule, CalculatorRoutingModule, ReactiveFormsModule
   ]
 })
 export class CalculatorModule { }
