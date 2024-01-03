@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -11,16 +11,27 @@ import {
   templateUrl: './cal.component.html',
   styleUrls: ['./cal.component.scss'],
 })
-export class CalComponent {
+export class CalComponent implements OnInit {
   finalResultValue: number = 0;
   numberList: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
   operatorList: string[] = ['+', '-', '*', '/'];
+  isInputEntered: boolean = false;
+  isResultShown: boolean = false;
   calculatorForm: FormGroup<{ input: FormControl<string | null> }>;
 
   constructor(private formBuilder: FormBuilder) {
     this.calculatorForm = this.formBuilder.group({
       input: [''],
     });
+  }
+
+  ngOnInit(): void {
+    this.calculatorForm.valueChanges.subscribe(
+      (formValues: Partial<{ input: string | null }>) => {
+        this.isInputEntered = !!this.calcInput?.value?.length;
+        this.isResultShown = false;
+      }
+    );
   }
 
   get calcInput(): AbstractControl<string | null, string | null> | null {
@@ -34,9 +45,11 @@ export class CalComponent {
 
   onClear(): void {
     this.calcInput?.setValue('');
-    this.finalResultValue = 0;
+    this.isResultShown = false;
   }
+
   onSubmit(): void {
     this.finalResultValue = eval(this.calcInput?.value as string);
+    this.isResultShown = true;
   }
 }
