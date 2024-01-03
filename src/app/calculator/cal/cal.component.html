@@ -2,8 +2,10 @@
   <div class="container calculator">
     <div class="content">
       <label> Input: </label>
-      <input type="text" formControlName="input" class="number-input"/>
-      <button class="btn btn-primary clear-btn" (click)="onClear()">Clear</button>
+      <input type="text" formControlName="input" class="number-input" />
+      <button class="btn btn-primary clear-btn" (click)="onClear()">
+        Clear
+      </button>
     </div>
     <div class="content">
       <button
@@ -17,15 +19,24 @@
     <div class="content">
       <button
         class="btn btn-primary btn-number"
-        *ngFor="let operator of operatorList" (click)="setInputValue(operator)"
+        *ngFor="let operator of operatorList"
+        (click)="setInputValue(operator)"
       >
         {{ operator }}
       </button>
     </div>
     <div class="content">
-      <button class="btn btn-primary" (click)="onSubmit()">=</button>
+      <button
+        class="btn btn-primary"
+        (click)="onSubmit()"
+        *ngIf="isInputEntered"
+      >
+        =
+      </button>
     </div>
 
-    <h4>Result is: {{finalResultValue}}</h4>
+    <h4 class="result" *ngIf="isResultShown">
+      Result is: {{ finalResultValue }}
+    </h4>
   </div>
 </form>
