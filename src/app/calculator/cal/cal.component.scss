@@ -7,11 +7,12 @@
     .clear-btn {
       margin-left: 10px;
     }
+    .number-input {
+        width: 20%;
+        padding: 4px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+      }
   }
-  input {
-    width: 20%;
-    padding: 4px 20px;
-    margin: 8px 0;
-    box-sizing: border-box;
-  }
+  
 }
