@@ -20,6 +20,11 @@ export class CalComponent {
       (this.calculatorForm.get('input')?.value as string) + buttonValue; 
     this.calculatorForm.get('input')?.setValue(inputValue as string);
   }
+
+  onClear(){
+    this.calculatorForm.get('input')?.setValue('');
+    this.finalResultValue = 0;
+  }
   onSubmit() {
     this.finalResultValue = eval(this.calculatorForm.get('input')?.value as string)
   }
