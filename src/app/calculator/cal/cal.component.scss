@@ -1,12 +1,17 @@
-.calculator{
-    .content{
-        margin: 20px;
-        .btn-number{
-            margin-right: 5px;
-           
-        }
-        .btn-left{
-            margin-left: 10px;
-        }
+.calculator {
+  .content {
+    margin: 20px;
+    .btn-number {
+      margin-right: 5px;
     }
+    .clear-btn {
+      margin-left: 10px;
+    }
+  }
+  input {
+    width: 20%;
+    padding: 4px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+  }
 }
